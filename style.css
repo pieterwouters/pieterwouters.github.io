@@ -13,14 +13,14 @@ width: 100%;
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-  display: flex;
-  justify-content: center;
+  margin:auto;
 }
 
 #gallery {
   display: flex;
   align-items: center;
   width: max-content;
+  margin: auto;
 }
 
 #oplossing {
