@@ -9,17 +9,17 @@ width: 100%;
 }
 
 .kader {
-  background-color: white;
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  margin:auto;
+background-color: white;
+height: 650px;
+width: 2126px;
+margin: auto;
 }
 
 #gallery {
   display: flex;
+  justify-content: flex-start;
   align-items: center;
-  width: max-content;
+  width: 2126px;
   margin: auto;
 }
 
