@@ -50,13 +50,11 @@ let currentSolution = [];
   const left = document.createElement("img");
   if (clef === "sol-sleutel") {
   left.src = "balk-L.png";
-  left.height = 530;
   gallery.appendChild(left);
   }
   
   if (clef === "fa-sleutel") {
   left.src = "balk-L-fa.png";
-  left.height = 530;
   gallery.appendChild(left);
   }
 
@@ -67,9 +65,9 @@ selected.forEach((n, index) => {
   slot.className = "note-slot";
 
   const img = document.createElement("img");
+    img.className = "note-image";
   if (clef === "sol-sleutel") {
   img.src = "noten/sol/" + n + ".png";
-  img.height = 530;
 
   slot.appendChild(img);
   gallery.appendChild(slot);
@@ -77,14 +75,12 @@ selected.forEach((n, index) => {
   if (index < selected.length - 1) {
     const sep = document.createElement("img");
     sep.src = "balk-M.png";
-    sep.height = 530;
     gallery.appendChild(sep);
   }
   }
   
   if (clef === "fa-sleutel") {
     img.src = "noten/fa/" + n + ".png";
-  img.height = 530;
 
   slot.appendChild(img);
   gallery.appendChild(slot);
@@ -92,7 +88,6 @@ selected.forEach((n, index) => {
   if (index < selected.length - 1) {
     const sep = document.createElement("img");
     sep.src = "balk-M.png";
-    sep.height = 530;
     gallery.appendChild(sep);
   }
   }
@@ -101,7 +96,6 @@ selected.forEach((n, index) => {
   // RIGHT bar
   const right = document.createElement("img");
   right.src = "balk-R.png";
-  right.height = 530;
   gallery.appendChild(right);
 
   console.log(selected);
@@ -125,13 +119,11 @@ function reset() {
 if (clef === "sol-sleutel") {
   mainImage.src = "blanco.png";
   mainImage.style.display = "block";
-  mainImage.style.height = "530px";
 }
 
 if (clef === "fa-sleutel") {
   mainImage.src = "blanco-fa.png";
   mainImage.style.display = "block";
-  mainImage.style.height = "530px";
 }
 }
 
