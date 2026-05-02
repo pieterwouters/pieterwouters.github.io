@@ -29,6 +29,7 @@ let currentSolution = [];
   const mainImage = document.getElementById("myImage");
   const clef = document.querySelector('input[name="sleutel"]:checked').value;
   
+  document.getElementById("toon-oplossing").disabled = true;
   oplossing.innerHTML = "";
   oplossingBalk.setAttribute("id", "oplossing-balk");
   oplossingBalk.src = ("oplossing-balk.png");
@@ -108,6 +109,10 @@ selected.forEach((n, index) => {
   gallery.appendChild(right);
 
   console.log(selected);
+}
+
+function stop () {
+	document.getElementById("toon-oplossing").disabled = false;
 }
 
 function reset() {
