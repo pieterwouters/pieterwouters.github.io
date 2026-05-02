@@ -254,3 +254,50 @@ if (select.selectedOptions[0].hidden) {
 }
 
 updateClefRange();
+
+function preloadImages() {
+
+  const imageList = [];
+
+  // Sol notes
+  availableImages.forEach(n => {
+    imageList.push("noten/sol/" + n + ".png");
+  });
+
+  // Fa notes
+  availableImages.forEach(n => {
+    imageList.push("noten/fa/" + n + ".png");
+  });
+
+  // Staff images
+  imageList.push(
+    "balk-L.png",
+    "balk-L-fa.png",
+    "balk-M.png",
+    "balk-R.png",
+    "blanco.png",
+    "blanco-fa.png",
+    "oplossing-balk.png"
+  );
+
+  // Solution images
+  const noteNames = ["do", "re", "mi", "fa", "sol", "la", "si"];
+
+  noteNames.forEach(name => {
+    imageList.push("oplossingen/nl/" + name + ".png");
+  });
+
+  imageList.push(
+    "oplossingen/nl/blanco-oplossing.png",
+    "oplossingen/nl/blanco-oplossing-L.png",
+    "oplossingen/nl/blanco-oplossing-R.png"
+  );
+
+  // Force browser to cache them
+  imageList.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+}
+
+preloadImages();
