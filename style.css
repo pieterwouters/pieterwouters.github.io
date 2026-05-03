@@ -97,6 +97,48 @@ padding-top: 2%;
 	width: 40%;
 }
 
+.wit {
+  flex: 1;
+  width: 14.3%;
+  background: white;
+  border: 1px solid black;
+  position: relative;
+  font-size: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 3vw;
+  text-align: center;
+  padding-bottom: 0.2vh;
+  cursor: pointer;
+}
+
+.zwart {
+  width: 9%;
+  height: 90%;
+  background: black;
+  z-index: 2;
+  margin: -4.5%;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 2.7vw;
+  text-align: center;
+  padding-bottom: 0.2vh;
+  cursor: pointer;
+}
+
+.random-noot {
+	width: 100%;
+	height: auto;
+}
+
+.random-noot-single {
+	height: 100%;
+	width: auto;
+}
+
 #gallery {
   display: flex;
   justify-content: flex-start;
@@ -159,6 +201,29 @@ padding-top: 2%;
 	display: block;
 	}
 
+#keyboard {
+  position: relative;
+  display: flex;
+  height: 50vh;
+  width: 90vw;
+  margin: auto;
+  overflow: hidden;
+}
+#testkader {
+	display: flex;
+	margin: auto;
+	height: 100%;
+	width: auto;
+	justify-content: center;
+}
+
+#testcontainer {
+	display: flex;
+	margin: auto;
+	height: 20vh;
+	justify-content: center;
+}
+
 h1 {
     color: rgb(10, 238, 10);
     text-align: center;
@@ -184,7 +249,7 @@ select {
 	    font-size: 2vh;
         }
 
-@media (orientation: portrait) {
+@media (max-width: 700px) and (orientation: portrait) {
 	.titel {
 		font-size: 7vw;
 	}
@@ -196,6 +261,7 @@ select {
 	.txt {
 		font-size: 4vw;
 	}
+		
 }
 
 @media (max-width: 700px) and (orientation: landscape){
