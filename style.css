@@ -239,6 +239,7 @@ a.btn {
   margin: auto;
   overflow: hidden;
 }
+
 #testkader {
 	position: absolute;
 	left: 50%;
@@ -298,6 +299,43 @@ select {
 	
 	.txt {
 		font-size: 4vw;
+	}
+	
+	a.btn {
+	background-color: teal;
+	position: absolute;
+	left: 0px;
+	top: 90vh;
+	text-decoration: none;
+	font-size: 5vw;
+	}
+	
+	#testkader {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 100%;
+	width: 60%;
+	justify-content: center;
+	}
+	
+	#keyboard {
+	position: relative;
+	display: flex;
+	height: 30vh;
+	width: 90vw;
+	margin: auto;
+	overflow: hidden;
+	}
+	
+	#start.start-test {
+	height: 50%;
+	width: 150%;
+	font-size: 7vh;
+	position: relative;
+	left: -25%;
+	background-color: white;
+	cursor: pointer;
 	}
 		
 }
