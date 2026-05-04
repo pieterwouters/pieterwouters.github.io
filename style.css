@@ -1,0 +1,318 @@
+body {
+background-color: rgb(0, 61, 0);
+}
+
+.image {
+background-color: white;
+width: 100%;
+}
+
+.kader {
+background-color: white;
+width: 100%;
+margin: auto;
+padding-top: 2%;
+}
+
+.staff-edge {
+	width: 12%;
+	height: auto;
+	display: block;
+}
+
+.note-slot {
+  width: 6%;       /* key alignment value */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blanco-slot {
+	width: 4%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.note-img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(0, 61, 0);
+}
+
+.titel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+	color: white;
+	font-size: 5vh;
+	padding: 2vh;
+}
+
+.digit {
+    font-size: 8vh;
+    color: #fff;
+}
+
+.txt {
+    font-size: 4vh;
+    color: #fffcd6;
+}
+
+.btn {
+    padding: 1vw;
+	margin: 1%;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 10px;
+    cursor: pointer;
+    font-size: 2vh;
+    transition: 0.5s;
+    color: white;
+}
+
+.labels {
+	color:white;
+	font-size: 3vh;
+}
+
+.oplossing-balk {
+	width: 100%;
+	display: block;
+	}
+
+.dropdowns {
+	width: 40%;
+}
+
+.wit {
+  flex: 1;
+  width: 14.3%;
+  background: white;
+  border: 1px solid black;
+  position: relative;
+  font-size: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 3vw;
+  text-align: center;
+  padding-bottom: 0.2vh;
+  cursor: pointer;
+}
+
+.zwart {
+  width: 9%;
+  height: 90%;
+  background: black;
+  z-index: 2;
+  margin: -4.5%;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 2.7vw;
+  text-align: center;
+  padding-bottom: 0.2vh;
+  cursor: pointer;
+}
+
+.random-noot {
+	width: 100%;
+	height: auto;
+}
+
+.random-noot-single {
+	height: 100%;
+	width: auto;
+}
+
+.staff-edge-single {
+	height: 100%;
+}
+
+a.btn {
+	background-color: teal;
+	position: absolute;
+	left: 0px;
+	text-decoration: none;
+	font-size: 3.5vh;
+}
+
+.test-time {
+	position: absolute;
+	right: 1vw;
+	top: 1vh;
+	padding: 10px;
+	border-radius: 1vh;
+	display: flex;
+	align-items: center;
+	gap: 0.5vw;
+}
+
+#gallery {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 100%;
+  margin: auto;
+}
+
+#oplossing {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  height: auto;
+}
+
+#buttons {
+	margin: auto;
+    margin-top: 3vh;
+	width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+#start {
+    background-color: #009779;
+}
+
+#start.start-test {
+	height: 50%;
+	width: 150%;
+	font-size: 8vh;
+	background-color: white;
+	cursor: pointer;
+}
+
+#stop {
+    background-color: #0e85fc;
+}
+
+#reset {
+    background-color: #c91400;
+}
+
+#toon-oplossing{
+    background-color: #46347A;
+}
+
+#menus {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+    width: 90%;
+    margin-top: 2vh;
+}
+
+#myImage {
+	width: 100%;
+	display: block;
+	}
+	
+#oplossing-balk {
+	width: 100%;
+	height: auto;
+	display: block;
+	}
+
+#keyboard {
+  position: relative;
+  display: flex;
+  height: 50vh;
+  width: 90vw;
+  margin: auto;
+  overflow: hidden;
+}
+#testkader {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 100%;
+	width: auto;
+	justify-content: center;
+}
+
+#testcontainer {
+	position: relative;
+	margin: auto;
+	height: 40vh;
+	margin-bottom: 20px;
+}
+
+#menus-notentest {
+	position: absolute;
+	left: 0px;
+	top: 15vh;
+	width: 40vh;
+}
+
+h1 {
+    color: rgb(10, 238, 10);
+    text-align: center;
+}
+
+b {
+    color: white;
+    font-size: 4vh;
+    padding: 1vh;
+}
+
+label {
+        display: table-cell;
+        white-space: nowrap;
+	    padding: 5px;
+	    font-size: 2vh;
+        }
+
+select {
+            display: table-cell;
+            white-space: nowrap;
+	    padding: 5px;
+	    font-size: 2vh;
+        }
+
+@media (max-width: 700px) and (orientation: portrait) {
+	.titel {
+		font-size: 7vw;
+	}
+	
+	.digit {
+		font-size: 6vw;
+	}
+	
+	.txt {
+		font-size: 4vw;
+	}
+		
+}
+
+@media (max-width: 700px) and (orientation: landscape){
+	.btn {
+		font-size: 5vh;
+	}
+	
+	.labels {
+		font-size: 5vh;
+	}
+	
+	select {
+		font-size: 4vh;
+	}
+}
+
