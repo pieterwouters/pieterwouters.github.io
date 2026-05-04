@@ -2,19 +2,22 @@ const testkader = document.getElementById("testkader");
 let currentNootNaam = "";
 
 const noteNamesNL = {
-
-    28: "mi", 29: "fa", 31: "sol", 33: "la", 35: "si",
-    36: "do", 38: "re", 40: "mi", 41: "fa", 43: "sol",
-    45: "la", 47: "si", 48: "do", 50: "re", 52: "mi",
-    53: "fa", 55: "sol", 57: "la", 59: "si", 60: "do"
+    28: "mi", 29: "fa", 31: "sol", 33: "la", 35: "si", 36: "do", 38: "re", 
+	40: "mi", 41: "fa", 43: "sol", 45: "la", 47: "si",
+    48: "do", 50: "re", 52: "mi", 53: "fa", 55: "sol", 57: "la", 59: "si",
+    60: "do", 62: "re", 64: "mi", 65: "fa", 67: "sol", 69: "la", 71: "si",
+    72: "do", 74: "re", 76: "mi", 77: "fa", 79: "sol", 81: "la", 83: "si",
+    84: "do", 86: "re", 88: "mi", 89: "fa", 91: "sol", 93: "la", 95: "si",
+    96: "do", 98: "re", 100: "mi", 101: "fa", 103: "sol", 105: "la", 107: "si",
+    108: "do"
 };
 
 const availableImages = [
-    28, 29, 31, 33, 35,
-    36, 38, 40, 41, 43, 45, 47,
     48, 50, 52, 53, 55, 57, 59,
-    60
-];
+    60, 62, 64, 65, 67, 69, 71,
+    72, 74, 76, 77, 79, 81, 83,
+    84, 86, 88, 89, 91, 93
+    ];
 
 function shuffle(array) {
 
@@ -29,13 +32,19 @@ function startTest() {
     testkader.innerHTML = "";
 	testkader.style.backgroundColor = "white";
 	
+	const balk = document.createElement("img");
+	balk.className = "staff-edge-single";
+	balk.src = "balk-L-test.png";
+	
+	testkader.appendChild(balk);
+	
     shuffle(availableImages);
     const nootNummer = availableImages[0];
     currentNootNaam = noteNamesNL[nootNummer];
 
     const randomNoot = document.createElement("img");
     randomNoot.className = "random-noot-single";
-    randomNoot.src = "noten/fa/" + nootNummer + ".png";
+    randomNoot.src = "noten/sol/" + nootNummer + ".png";
 
     testkader.appendChild(randomNoot);
 }
@@ -49,7 +58,7 @@ document.querySelectorAll(".wit, .zwart").forEach(key => {
             this.style.backgroundColor = "green";
 			    setTimeout(() => {
 					startTest();
-				}, 500);
+				}, 300);
         } else {
             this.style.backgroundColor = "red";
         }
