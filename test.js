@@ -1,6 +1,21 @@
 const testkader = document.getElementById("testkader");
 let currentNootNaam = "";
+const imagesToShow = 10;
+let notesShown = 0;
+const startButton = document.getElementById("start");
+let previousNote = 0;
 
+const availableImages = [
+	28, 29, 31, 33, 35,
+    36, 38, 40, 41, 43, 45, 47,
+    48, 50, 52, 53, 55, 57, 59,
+    60, 62, 64, 65, 67, 69, 71,
+    72, 74, 76, 77, 79, 81, 83,
+    84, 86, 88, 89, 91, 93, 95,
+    96, 98, 100, 101, 103, 105, 
+	107, 108
+    ];
+	
 const noteNamesNL = {
     28: "mi", 29: "fa", 31: "sol", 33: "la", 35: "si", 36: "do", 38: "re", 
 	40: "mi", 41: "fa", 43: "sol", 45: "la", 47: "si",
@@ -12,12 +27,10 @@ const noteNamesNL = {
     108: "do"
 };
 
-const availableImages = [
-    48, 50, 52, 53, 55, 57, 59,
-    60, 62, 64, 65, 67, 69, 71,
-    72, 74, 76, 77, 79, 81, 83,
-    84, 86, 88, 89, 91, 93
-    ];
+const selects = [
+	document.getElementById("van"),
+    document.getElementById("tot")
+	]
 
 function shuffle(array) {
 
@@ -29,24 +42,77 @@ function shuffle(array) {
 }
 
 function startTest() {
+	notesShown = 0;
+    startTimer();
+    nextNote();
+}
+
+function nextNote() {
+	
     testkader.innerHTML = "";
 	testkader.style.backgroundColor = "white";
 	
+	if (notesShown < imagesToShow) {
+	
+	const clef = document.querySelector('input[name="sleutel"]:checked').value;
 	const balk = document.createElement("img");
 	balk.className = "staff-edge-single";
-	balk.src = "balk-L-test.png";
+	if (clef === "sol-sleutel") {
+		balk.src = "balk-L-test.png";
+	} else {
+		balk.src = "balk-L-test-fa.png";
+	}
 	
 	testkader.appendChild(balk);
 	
-    shuffle(availableImages);
-    const nootNummer = availableImages[0];
+	const start = parseInt(document.getElementById("van").value);
+	const end = parseInt(document.getElementById("tot").value);
+
+	// filter notes based on range
+	let filtered = availableImages.filter(n => n >= start && n <= end);
+
+	// safety check (prevents crashes)
+	if (filtered.length === 0) return;
+
+	let nootNummer = filtered[Math.floor(Math.random() * filtered.length)];
+	if (nootNummer === previousNote) {
+	
+	const index = filtered.indexOf(nootNummer);
+	if (index > -1) { // only splice array when item is found
+	filtered.splice(index, 1); // 2nd parameter means remove one item only
+	}	
+	nootNummer = filtered[Math.floor(Math.random() * filtered.length)];
+	} else {
+	}
+	previousNote = nootNummer;
+
     currentNootNaam = noteNamesNL[nootNummer];
 
     const randomNoot = document.createElement("img");
     randomNoot.className = "random-noot-single";
-    randomNoot.src = "noten/sol/" + nootNummer + ".png";
+	
+	if (clef === "sol-sleutel") {
+		randomNoot.src = "noten/sol/" + nootNummer +".png";
+	} else {
+		randomNoot.src = "noten/fa/" + nootNummer + ".png";
+	}
 
     testkader.appendChild(randomNoot);
+	notesShown++;
+	} else {
+		testkader.innerHTML = "";
+		testkader.style.backgroundColor = "transparent";
+		currentNootNaam = "";
+		notesShown = 0;
+		const button = document.createElement("button");
+		button.id = "start";
+		button.setAttribute("onclick", "startTest()");
+		button.className = "start-test";
+		testkader.appendChild(button);
+		button.innerHTML = "Start";
+		stopTimer();
+		return;
+	}
 }
 
 document.querySelectorAll(".wit, .zwart").forEach(key => {
@@ -57,7 +123,7 @@ document.querySelectorAll(".wit, .zwart").forEach(key => {
         if (clickedNaam === currentNootNaam) {
             this.style.backgroundColor = "green";
 			    setTimeout(() => {
-					startTest();
+					nextNote();
 				}, 300);
         } else {
             this.style.backgroundColor = "red";
@@ -73,3 +139,54 @@ document.querySelectorAll(".wit, .zwart").forEach(key => {
     });
 
 });
+
+function updateClefRange() {
+
+	const clef = document.querySelector('input[name="sleutel"]:checked').value;
+
+	// Set default ranges per clef
+	if (clef === "sol-sleutel") {
+		van.value = "60"; // C4
+		tot.value = "76"; // E5
+	}
+
+	if (clef === "fa-sleutel") {
+		van.value = "45"; // A2
+		tot.value = "60"; // C4
+	}
+
+	selects.forEach(select => {
+
+		Array.from(select.options).forEach(option => {
+			const note = parseInt(option.value);
+			let visible = true;
+
+			// Treble clef
+			if (clef === "sol-sleutel") {
+				visible = note >= 48 && note <= 93;
+			}
+
+			// Bass clef
+			if (clef === "fa-sleutel") {
+				visible = note >= 28 && note <= 72;
+			}
+
+			option.hidden = !visible;
+			option.disabled = !visible;
+		});
+
+		if (select.selectedOptions[0].hidden) {
+
+			for (let option of select.options) {
+
+				if (!option.hidden) {
+
+					select.value = option.value;
+					break;
+				}
+			}
+		}
+	});
+}
+
+updateClefRange();
