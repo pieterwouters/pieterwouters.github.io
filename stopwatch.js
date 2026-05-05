@@ -5,6 +5,24 @@ let timer = false;
 let minute = 00;
 let second = 00;
 let count = 00;
+
+function startTimer() {
+    minute = 0;
+    second = 0;
+    count = 0;
+
+    document.getElementById('min').innerHTML = "00";
+    document.getElementById('sec').innerHTML = "00";
+    document.getElementById('count').innerHTML = "00";
+
+    timer = true;
+    stopWatch();
+}
+
+function stopTimer() {
+    timer = false;
+}
+
 startBtn.addEventListener('click', function () {
     minute = 0;
     second = 0;
