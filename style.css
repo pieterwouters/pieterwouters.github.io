@@ -194,8 +194,12 @@ a.btn {
 	height: 50%;
 	width: 150%;
 	font-size: 8vh;
-	background-color: white;
+	background-color: #009779;
 	cursor: pointer;
+	color: white;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 #stop {
@@ -217,6 +221,17 @@ a.btn {
     align-items: center;
     gap: 1vh;
     width: 90%;
+    margin-top: 2vh;
+}
+
+#menus.menus-test {
+	position: absolute;
+	top: 30%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+    width: 25%;
     margin-top: 2vh;
 }
 
@@ -244,9 +259,11 @@ a.btn {
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
+	width: 15%;
 	height: 100%;
-	width: auto;
+	display: flex;
 	justify-content: center;
+	align-items: center;
 }
 
 #testcontainer {
@@ -337,6 +354,18 @@ select {
 	background-color: white;
 	cursor: pointer;
 	}
+	
+	#menus.menus-test {
+	position: absolute;
+	top: 70vh;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+    width: 25%;
+    margin-top: 2vh;
+	left: 10vh;
+	}
 		
 }
 
@@ -351,6 +380,17 @@ select {
 	
 	select {
 		font-size: 4vh;
+	}
+	
+	#menus.menus-test {
+	position: absolute;
+	top: 30%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+    width: 25%;
+    margin-top: 2vh;
 	}
 }
 
