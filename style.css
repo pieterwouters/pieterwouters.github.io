@@ -161,6 +161,10 @@ a.btn {
 	gap: 0.5vw;
 }
 
+.accidental {
+	position: absolute; 
+}
+
 #gallery {
   display: flex;
   justify-content: flex-start;
@@ -200,6 +204,19 @@ a.btn {
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
+}
+
+#start.reset-test {
+	height: 20%;
+	width: 100%;
+	font-size: 3vh;
+	background-color: #009779;
+	cursor: pointer;
+	color: white;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 0;
 }
 
 #stop {
@@ -280,6 +297,14 @@ a.btn {
 	width: 40vh;
 }
 
+#testresultaat {
+	padding: 10px;
+	font-size: 3vh;
+	position: absolute;
+	top: 5%;
+	color: white;
+}
+
 h1 {
     color: rgb(10, 238, 10);
     text-align: center;
@@ -346,6 +371,16 @@ select {
 	}
 	
 	#start.start-test {
+	height: 50%;
+	width: 150%;
+	font-size: 7vh;
+	position: relative;
+	left: -25%;
+	background-color: white;
+	cursor: pointer;
+	}
+	
+	#start.reset-test {
 	height: 50%;
 	width: 150%;
 	font-size: 7vh;
