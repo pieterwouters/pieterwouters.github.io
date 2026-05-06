@@ -4,6 +4,8 @@ const imagesToShow = 10;
 let notesShown = 0;
 const startButton = document.getElementById("start");
 let previousNote = 0;
+let gemaakteFouten = 0;
+let wijzigingsteken = "";
 
 const availableImages = [
 	28, 29, 31, 33, 35,
@@ -17,14 +19,14 @@ const availableImages = [
     ];
 	
 const noteNamesNL = {
-    28: "mi", 29: "fa", 31: "sol", 33: "la", 35: "si", 36: "do", 38: "re", 
-	40: "mi", 41: "fa", 43: "sol", 45: "la", 47: "si",
-    48: "do", 50: "re", 52: "mi", 53: "fa", 55: "sol", 57: "la", 59: "si",
-    60: "do", 62: "re", 64: "mi", 65: "fa", 67: "sol", 69: "la", 71: "si",
-    72: "do", 74: "re", 76: "mi", 77: "fa", 79: "sol", 81: "la", 83: "si",
-    84: "do", 86: "re", 88: "mi", 89: "fa", 91: "sol", 93: "la", 95: "si",
-    96: "do", 98: "re", 100: "mi", 101: "fa", 103: "sol", 105: "la", 107: "si",
-    108: "do"
+    28:"mi", 29:"fa", 30:"fa-kruis", 31:"sol", 32:"sol-kruis", 33:"la", 34:"la-kruis", 35:"si",
+    36:"do", 37:"do-kruis", 38:"re", 39:"re-kruis", 40:"mi", 41:"fa", 42:"fa-kruis", 43:"sol", 44:"sol-kruis", 45:"la", 46:"la-kruis", 47:"si",
+    48:"do", 49:"do-kruis", 50:"re", 51:"re-kruis", 52:"mi", 53:"fa", 54:"fa-kruis", 55:"sol", 56:"sol-kruis", 57:"la", 58:"la-kruis", 59:"si",
+    60:"do", 61:"do-kruis", 62:"re", 63:"re-kruis", 64:"mi", 65:"fa", 66:"fa-kruis", 67:"sol", 68:"sol-kruis", 69:"la", 70:"la-kruis", 71:"si",
+    72:"do", 73:"do-kruis", 74:"re", 75:"re-kruis", 76:"mi", 77:"fa", 78:"fa-kruis", 79:"sol", 80:"sol-kruis", 81:"la", 82:"la-kruis", 83:"si",
+    84:"do", 85:"do-kruis", 86:"re", 87:"re-kruis", 88:"mi", 89:"fa", 90:"fa-kruis", 91:"sol", 92:"sol-kruis", 93:"la", 94:"la-kruis", 95:"si",
+    96:"do", 97:"do-kruis", 98:"re", 99:"re-kruis", 100:"mi", 101:"fa", 102:"fa-kruis", 103:"sol", 104:"sol-kruis", 105:"la", 106:"la-kruis", 107:"si",
+    108:"do"
 };
 
 const selects = [
@@ -43,8 +45,13 @@ function shuffle(array) {
 
 function startTest() {
 	notesShown = 0;
+	gemaakteFouten = 0;
     startTimer();
     nextNote();
+	document.getElementById("sol-sleutel").disabled = true;
+	document.getElementById("fa-sleutel").disabled = true;
+	document.getElementById("van").disabled = true;
+	document.getElementById("tot").disabled = true;
 }
 
 function nextNote() {
@@ -65,6 +72,16 @@ function nextNote() {
 	
 	testkader.appendChild(balk);
 	
+	/* WIJZIGINGSTEKENS 
+	
+	const kruis = document.createElement("img");
+	kruis.src = "kruis.png";
+	kruis.className = "accidental";
+	testkader.appendChild(kruis);
+	wijzigingsteken = "kruis";
+	
+	*/
+	
 	const start = parseInt(document.getElementById("van").value);
 	const end = parseInt(document.getElementById("tot").value);
 
@@ -82,11 +99,13 @@ function nextNote() {
 	filtered.splice(index, 1); // 2nd parameter means remove one item only
 	}	
 	nootNummer = filtered[Math.floor(Math.random() * filtered.length)];
-	} else {
-	}
+	};
 	previousNote = nootNummer;
 
     currentNootNaam = noteNamesNL[nootNummer];
+	if (wijzigingsteken === "kruis") {
+		currentNootNaam = noteNamesNL[nootNummer + 1];
+	};
 
     const randomNoot = document.createElement("img");
     randomNoot.className = "random-noot-single";
@@ -99,20 +118,57 @@ function nextNote() {
 
     testkader.appendChild(randomNoot);
 	notesShown++;
-	} else {
-		testkader.innerHTML = "";
-		testkader.style.backgroundColor = "transparent";
-		currentNootNaam = "";
-		notesShown = 0;
-		const button = document.createElement("button");
-		button.id = "start";
-		button.setAttribute("onclick", "startTest()");
-		button.className = "start-test";
-		testkader.appendChild(button);
-		button.innerHTML = "Start";
-		stopTimer();
-		return;
+	} else { reset();
 	}
+}
+function reset() {
+	testkader.innerHTML = "";
+	testkader.style.backgroundColor = "#46347A";
+	currentNootNaam = "";
+	notesShown = 0;
+	
+	document.getElementById("sol-sleutel").disabled = false;
+	document.getElementById("fa-sleutel").disabled = false;
+	document.getElementById("van").disabled = false;
+	document.getElementById("tot").disabled = false;
+	
+	const min = parseInt(document.getElementById("min").innerHTML);
+	const sec = parseInt(document.getElementById("sec").innerHTML);
+	const count = document.getElementById("count").innerHTML;
+
+	// remove leading zeros automatically with parseInt
+
+	let timeString = "";
+
+	// only show minutes if > 0
+	if (min > 0) {
+		timeString += `${min} min, `;
+	}
+
+	// seconds always shown (no leading zero now)
+	timeString += `${sec} seconden en `;
+
+	// keep hundredths padded (you probably want this)
+	timeString += `${count} honderdsten`;	
+	
+	
+	const resultaat = document.createElement("div");
+	resultaat.id = "testresultaat";
+	resultaat.innerHTML =
+	"Je haalde een tijd van " + timeString + "!" + 
+	"<br> <br>" +
+	"Je maakte " + gemaakteFouten +" fouten.";
+	testkader.appendChild(resultaat);
+	
+	
+	const button = document.createElement("button");
+	button.id = "start";
+	button.setAttribute("onclick", "startTest()");
+	button.className = "reset-test";
+	testkader.appendChild(button);
+	button.innerHTML = "Speel nog eens!";
+	stopTimer();
+	return;
 }
 
 document.querySelectorAll(".wit, .zwart").forEach(key => {
@@ -127,6 +183,7 @@ document.querySelectorAll(".wit, .zwart").forEach(key => {
 				}, 300);
         } else {
             this.style.backgroundColor = "red";
+			gemaakteFouten++;
         }
     });
 
