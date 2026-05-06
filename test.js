@@ -123,7 +123,7 @@ function nextNote() {
 }
 function reset() {
 	testkader.innerHTML = "";
-	testkader.style.backgroundColor = "#46347A";
+	testkader.style.backgroundColor = "white";
 	currentNootNaam = "";
 	notesShown = 0;
 	
