@@ -6,6 +6,7 @@ const startButton = document.getElementById("start");
 let previousNote = 0;
 let gemaakteFouten = 0;
 let wijzigingsteken = "";
+let fout = "";
 
 const availableImages = [
 	28, 29, 31, 33, 35,
@@ -151,13 +152,17 @@ function reset() {
 	// keep hundredths padded (you probably want this)
 	timeString += `${count} honderdsten`;	
 	
-	
+	if (gemaakteFouten === 1) {
+		fout = " fout."
+	} else { 
+	fout = " fouten."
+	};
 	const resultaat = document.createElement("div");
 	resultaat.id = "testresultaat";
 	resultaat.innerHTML =
 	"Je haalde een tijd van " + timeString + "!" + 
 	"<br> <br>" +
-	"Je maakte " + gemaakteFouten +" fouten.";
+	"Je maakte " + gemaakteFouten + fout;
 	testkader.appendChild(resultaat);
 	
 	
